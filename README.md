@@ -1,16 +1,14 @@
-#TODO#
-5. return total path actions
-5. requested updates - trigger each one.
-5. define layer
+#TODO
+1. return total path actions
+1. requested updates - trigger each one.
+1. define layer
+1. test multiple
 1. deal with size
-5. test multiple
-
-
 
 #Longterm#
-Add fill
-By length
-4. color from node?
+1. Add fill
+1. By length
+1. color from node?
 
 
 #Build#
