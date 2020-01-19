@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" style="background-color:#fff;">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, user-scalable=0 shrink-to-fit=no">
+
+	<title>SVG -> Canvas</title>
+	<style>
+		html
+		{
+		  font-size: 10px;
+		  height: 100%;
+		  background-color: #000;
+		  color: #000; 
+		}
+
+		body 
+		{
+		  height: 100%;
+		  padding: 0;
+		  margin: 0;
+		  background-color: #FAF0DD;
+		  font-family: Arial, Helvetica, snas-serif; 
+		}
+
+		.svg_holder 
+		{
+		  display: inline-block;
+		  vertical-align: top; 
+		}
+
+		.canvas_holder 
+		{
+		  display: inline-block;
+		  vertical-align: top; 
+		}
+	</style> 
+</head>
+
+<body >
+
+	<div id="page_content" class="page_content home">
+		<div id="svg_holder" class="svg_holder"></div> <!-- END SVG HOLDER -->
+		<div id="canvas_holder" class="canvas_holder"></div> <!-- END CANVAS HOLDER -->
+	</div>
+
+
+	<script type="module" src="es.js"></script>
+
+	<script type="module">
+
+		import s2c from './es.js';
+
+		function allDone()
+		{
+			console.log("DONE NOW");
+		}
+
+		var a = new s2c();
+		var b = a.getByPath();
+
+		var path = './city.svg';
+		console.log("LOADING " + path);
+		var self = this;
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET", path, true);
+		ajax.onload = function (e) {
+			var target = document.getElementById("svg_holder");
+			target.innerHTML = ajax.responseText;
+			setTimeout(function () {
+				var svg = document.getElementById('Layer_1');
+				var canvasHolder = document.getElementById('canvas_holder');
+				b.init(svg, canvasHolder);
+				b.setColor('#990099'); //must be hex
+				//b.setSpeed(2000); //path sections per second
+				b.setRunTime(5); // total run time of animation in seconds
+				b.setCallback(allDone); // callback when complete
+				b.start_draw(); //start drawing
+				//b.updateByActionNumber(700);
+				//b.updateByPercentComplete(0.9);
+
+			}, 100);
+		};
+		ajax.send();		
+
+	</script>
+
+	<!-- <script src="./browser.js"></script> -->
+
+</body>
+
+</html>

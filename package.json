@@ -1,0 +1,27 @@
+{
+  "name": "svg_canvas",
+  "version": "1.0.0",
+  "description": "draw svg gaphic node to the canvas",
+  "main": "bundle.js",
+  "scripts": {
+    "test": "test it now",
+    "build": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "the repo of the fejbot"
+  },
+  "keywords": [
+    "svg",
+    "canvas"
+  ],
+  "author": "jcgray",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-dev-server": "^0.4.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
+}
