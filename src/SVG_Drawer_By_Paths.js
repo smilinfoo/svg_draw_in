@@ -1,4 +1,4 @@
-export default class SVG_Drawer_By_Paths
+export default class by_paths
 {
 	//
 	constructor()
@@ -306,4 +306,4 @@ export default class SVG_Drawer_By_Paths
 	}
 }
 
-export {SVG_Drawer_By_Paths}
+export {by_paths}

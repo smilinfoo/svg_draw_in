@@ -4,6 +4,7 @@
 1. define layer
 1. test multiple
 1. deal with size
+1. Do we need jest (or mocha as second option)
 
 #Longterm#
 1. Add fill

@@ -6,7 +6,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, user-scalable=0 shrink-to-fit=no">
-	<title>Browser Example</title>
+
+	<title>Universal Module Example</title>
 	<style>
 		html, body
 		{
@@ -31,47 +32,16 @@
 	</div>
 
 
-	<script src="svg_draw_in.min.js"></script>
-	<script>
+	<script type="module"> 
 
-
-		function drawExample()
-		{
-			var svg = document.getElementById('Layer_1');
-			var canvasHolder = document.getElementById('canvas_holder');
-			var totalDrawInstructions = drawer.init(svg, canvasHolder);
-			
-			//set a callback when completed
-			drawer.setCallback(allDone);
-
-			//change the draw color
-			drawer.setColor('#333333'); //must be hex
-
-			//set the draw speed in draw instructions per second
-			drawer.setSpeed(2000);
-
-			//or set a time in seconds the illustration should take to complete
-			//drawer.setRunTime(10);
-
-			//start drawing
-			drawer.start_draw();
-
-
-			//if you want more controll, to stop and start or add easing use these methods
-
-			//to update to a specific draw instruction number (only reason the total is returned by init)
-			//drawer.updateByActionNumber(700);
-
-			//to update the illustration by a percentage
-			//drawer.updateByPercentComplete(0.9);
-		}
+		import  './svg_draw_in.umd.js';
 
 		function allDone()
 		{
 			console.log("DONE NOW");
 		}
 
-		var drawer = new svg_draw_in.by_paths();
+		var b = new svg_draw_in.by_paths();
 
 		var path = './city.svg';
 		console.log("LOADING " + path);
@@ -82,14 +52,22 @@
 			var target = document.getElementById("svg_holder");
 			target.innerHTML = ajax.responseText;
 			setTimeout(function () {
-				drawExample();
+				var svg = document.getElementById('Layer_1');
+				var canvasHolder = document.getElementById('canvas_holder');
+				var tot = b.init(svg, canvasHolder);
+				b.setColor('#990099'); //must be hex
+				//b.setSpeed(2000); //path sections per second
+				b.setRunTime(10); // total run time of animation in seconds
+				b.setCallback(allDone); // callback when complete
+				b.start_draw(); //start drawing
+				//b.updateByActionNumber(700);
+				//b.updateByPercentComplete(0.9);
+				console.log("returned " + tot);
 			}, 100);
 		};
 		ajax.send();		
 
 	</script>
-
-	<!-- <script src="./browser.js"></script> -->
 
 </body>
 
