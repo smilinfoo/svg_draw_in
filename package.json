@@ -2,12 +2,9 @@
   "name": "svg_draw_in",
   "version": "0.0.1",
   "description": "Sequentially draws paths from an svg onto an html canvas element.  Simulates the effect of a line drawing being drawn onto the screen.  Thats it.",
-  "main": "./dist/svg_draw_in.umd.js",
-  "browser": "./dist/svg_draw_in.js",
-  "module": "./dist/svg_draw_in.jsm",
+  "main": "./src/SVG_Draw_in.js",
+  "module": "./src/SVG_Draw_in.js",
   "scripts": {
-    "test": "test it now",
-    "build": "rollup -c -w"
   },
   "repository": {
     "type": "git",
@@ -25,12 +22,4 @@
   ],
   "author": "smilinfoo",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.8.3",
-    "rollup": "^1.29.0",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-dev-server": "^0.4.3",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.2.0"
-  }
 }

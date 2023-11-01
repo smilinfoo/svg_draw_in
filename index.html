@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, user-scalable=0 shrink-to-fit=no">
-	<title>Browser Example</title>
+	<title>SVG Draw In Example</title>
 	<style>
 		html, body
 		{
@@ -30,10 +30,19 @@
 		<div id="canvas_holder" class="canvas_holder"></div> <!-- END CANVAS HOLDER -->
 	</div>
 
+    <!-- <script type="module" src="./src/SVG_Draw_In.js"></script> -->
+    <script type="importmap">
+        {
+          "imports": {
+            "SVG_Draw_In": "./src/SVG_Draw_In.js"
+          }
+        }
+      </script>
+	<script type="module">
 
-	<script src="svg_draw_in.min.js"></script>
-	<script>
+        import SVG_Drawer from "SVG_Draw_In";
 
+        var drawer = new SVG_Drawer();
 
 		function drawExample()
 		{
@@ -71,10 +80,9 @@
 			console.log("DONE NOW");
 		}
 
-		var drawer = new svg_draw_in.by_paths();
+		
 
-		var path = './city.svg';
-		console.log("LOADING " + path);
+		var path = './example/city.svg';
 		var self = this;
 		var ajax = new XMLHttpRequest();
 		ajax.open("GET", path, true);
@@ -88,8 +96,6 @@
 		ajax.send();		
 
 	</script>
-
-	<!-- <script src="./browser.js"></script> -->
 
 </body>
 

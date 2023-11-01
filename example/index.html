@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" style="background-color:#fff;">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, user-scalable=0 shrink-to-fit=no">
+	<title>SVG Draw In Example</title>
+	<style>
+		html, body
+		{
+		  height: 100%;
+		  background-color: #FAF0DD;
+		  color: #000; 
+		}
+
+		.svg_holder, .canvas_holder
+		{
+		  display: inline-block;
+		  vertical-align: top; 
+		}
+	</style> 
+</head>
+
+<body >
+
+	<div id="page_content" class="page_content home">
+		<div id="svg_holder" class="svg_holder"></div> <!-- END SVG HOLDER -->
+		<div id="canvas_holder" class="canvas_holder"></div> <!-- END CANVAS HOLDER -->
+	</div>
+
+
+	<script src="../../src/svg_draw_in.js"></script>
+	<script>
+
+
+		function drawExample()
+		{
+			var svg = document.getElementById('Layer_1');
+			var canvasHolder = document.getElementById('canvas_holder');
+			var totalDrawInstructions = drawer.init(svg, canvasHolder);
+			
+			//set a callback when completed
+			drawer.setCallback(allDone);
+
+			//change the draw color
+			drawer.setColor('#333333'); //must be hex
+
+			//set the draw speed in draw instructions per second
+			drawer.setSpeed(2000);
+
+			//or set a time in seconds the illustration should take to complete
+			//drawer.setRunTime(10);
+
+			//start drawing
+			drawer.start_draw();
+
+
+			//if you want more controll, to stop and start or add easing use these methods
+
+			//to update to a specific draw instruction number (only reason the total is returned by init)
+			//drawer.updateByActionNumber(700);
+
+			//to update the illustration by a percentage
+			//drawer.updateByPercentComplete(0.9);
+		}
+
+		function allDone()
+		{
+			console.log("DONE NOW");
+		}
+
+		var drawer = new svg_draw_in.by_paths();
+
+		var path = './city.svg';
+		console.log("LOADING " + path);
+		var self = this;
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET", path, true);
+		ajax.onload = function (e) {
+			var target = document.getElementById("svg_holder");
+			target.innerHTML = ajax.responseText;
+			setTimeout(function () {
+				drawExample();
+			}, 100);
+		};
+		ajax.send();		
+
+	</script>
+
+	<!-- <script src="./browser.js"></script> -->
+
+</body>
+
+</html>
